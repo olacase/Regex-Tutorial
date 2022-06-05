@@ -10,16 +10,16 @@ Matching Email-
 
 # Table of Contents
 [Anchors] (#Anchors)
-Quantifiers
-OR Operator
-Character Classes
-Flags
-Grouping and Capturing
-Bracket Expressions
-Greedy and Lazy Match
-Boundaries
-Back-references
-Look-ahead and Look-behind
+[Quantifiers] (#Quantifiers)
+[OROperator] (#OR Operator)
+[CharacterClasses] (#Character Classes)
+[Flags] (#Flags)
+[GroupingandCapturing] (#Grouping and Capturing)
+[BracketExpressions] (#Bracket Expressions)
+[GreedyandLazyMatch] (#Greedy and Lazy Match)
+[Boundaries] (#Boundries)
+[Back-references] (#Back-references)
+[Look-aheadandLook-behind] (#Look-ahead and Look-behind)
 
 # Regex Components
 

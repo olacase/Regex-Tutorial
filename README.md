@@ -113,6 +113,7 @@ Lookahead allows to add a condition for “what follows”. Lookbehind is simila
 Olamide Bello
 https://github.com/olacase
 
-## resources
+## contributions
 https://www.google.com
 https://www.rexegg.com/
+https://www.stackoverflow.com

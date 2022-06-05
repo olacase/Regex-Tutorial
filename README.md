@@ -8,18 +8,18 @@ Matching Email-
 
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
-# Table of Contents
--[Anchors] (#Anchors)
--[Quantifiers] (#Quantifiers)
--[OROperator] (#OR Operator)
--[CharacterClasses] (#Character Classes)
--[Flags] (#Flags)
--[GroupingandCapturing] (#Grouping and Capturing)
--[BracketExpressions] (#Bracket Expressions)
--[GreedyandLazyMatch] (#Greedy and Lazy Match)
+## Table of Contents
+* [Anchors] (#Anchors)
+* [Quantifiers] (#Quantifiers)
+* [OROperator] (#OR Operator)
+* [CharacterClasses] (#Character Classes)
+* [Flags] (#Flags)
+* [GroupingandCapturing] (#Grouping and Capturing)
+* [BracketExpressions] (#Bracket Expressions)
+* [GreedyandLazyMatch] (#Greedy and Lazy Match)
 
 
-# Regex Components
+## Regex Components
 
 ### Anchors
 Anchors are what starts and ends the regular expression. 

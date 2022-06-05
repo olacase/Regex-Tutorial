@@ -17,62 +17,61 @@ Matching Email-
 -[GroupingandCapturing] (#Grouping and Capturing)
 -[BracketExpressions] (#Bracket Expressions)
 -[GreedyandLazyMatch] (#Greedy and Lazy Match)
--[Boundaries] (#Boundries)
--[Back-references] (#Back-references)
--[Look-aheadandLook-behind] (#Look-ahead and Look-behind)
+
 
 # Regex Components
 
 ### Anchors
-The anchor is what starts and ends the regular expression. In the matching email code,
+Anchors are what starts and ends the regular expression. 
+In this email code,
 
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
 
-the anchors are the ^ and the $. This code specifically is saying that we are looking for something that starts with
+the anchors are the ^ and the $. This code is telling the computer that we are looking for strings that starts with
 
 ^([a-z0-9_\.-]+)
 
-we will define what everything inside the parentheses later in this tutorial, but what the anchor means is that if we are to find a match it has follow those initial guidelines. It also has to end with
+and end with
 
 .([a-z\.]{2,6})$.
 
-So, it must start and end with the given parameters within the code. If it does not, then it is not a match.
+therefore, it must begin and end with the given parameters within the code. otherwise, it is not a match.
 
 ### Quantifiers
-A quantifier is used to determine how many times a specific character or group of characters needs to be present in order to have a match. For instance, if we used the following code in our regex, xyz+ then this will match any string xy followed by at least one z. So, if we look at our code for matching the email:
+A quantifier is used to determine how many times a specific character or sequence characters needs to be present in order to match.
+if we the follwing code for matching the email:
 
 ([a-z0-9_\.-]+)
 
-this will match any string that contains a-z, 0-9, _, ., or -. The quantifier + means that it has to contain at least one of this in order to have a match.
+it will match any string that contains a-z, 0-9, _, ., or -. The quantifier + means it must contain at least one of these to be a match.
 
 ### OR Operator
-It is not present in the code for the given matching email code, but in order to talk about the OR Operator, we will look at the following code for matching a hex code.
+The next component we will be discussing is the "or" operator. The "or" operator within a regular expression is defined using the | element. The component indicates that it could be either of the components that we are separating with the |. For our hex value regular expression we have 
+([a-f0-9]{6}|[a-f0-9]{3}). Note the or operator separating these 2 components. 
+This means that our hex value could either be 6 characters [a-f0-9]{6} or 3 characters [a-f0-9]{3}.
 
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-
-This is a regex for matching a hex code that uses the OR Operator. What this will do is it will match where it starts with the # and that has to come first followed by one of the following:
-
-[a-f0-9]{6} which will match a 6 character long string that contains a combination of a-f letters and 0-9 numbers.
-
-| OR Operator
-
-[a-f0-9]{3} it will match a 3 character long string that contains a combination of a-f letters and 0-9 numbers.
 
 ### Character Classes
-\d is present in the given matching email code and what it will match a single letter character, a-z, after the @ sign in the email address. Basically ensuring that a letter is matched after the @ in the email and not a number or special character.
+With a Character Classes, you can tell the regex engine to match only one out of several characters. Simply place the characters you want to match between square brackets. If you want to match an a or an e, use [ae]. You could use this in gr[ae]y to match either gray or grey. Very useful if you do not know whether the document you are searching through is written in American or British English.
+
+A character class matches only a single character. gr[ae]y does not match graay, graey or any such thing. The order of the characters inside a character class does not matter. The results are identical.
+
+You can use a hyphen inside a character class to specify a range of characters. [0-9] matches a single digit between 0 and 9. You can use more than one range. [0-9a-fA-F] matches a single hexadecimal digit, case insensitively. You can combine ranges and single characters. [0-9a-fxA-FX] matches a hexadecimal digit or the letter X. Again, the order of the characters and the ranges does not matter.
+
+Character classes are one of the most commonly used features of regular expressions. You can find a word, even if it is misspelled, such as sep[ae]r[ae]te or li[cs]en[cs]e. You can find an identifier in a programming language with [A-Za-z_][A-Za-z_0-9]*. You can find a C-style hexadecimal number with 0[xX][A-Fa-f0-9]+.
 
 ### Flags
-A regex flag is not used in the matching email code that is being used for this tutorial. A regular expression typically comes in the form:
+A flag is an optional parameter to a regex that modifies its behavior of searching. A flag changes the default searching behaviour of a regular expression. It makes a regex search in a different way. A flag is denoted using a single lowercase alphabetic character, typically it comes in the following form:
 
 /regex/
 
 Where the slashes denote where the regular expresssion starts and ends. A flag can be used after the slash to give more guidelines for our matching. The flags are:
 
-g which stands for "global" which will allow for matching all the instances within a string that follow the matching guidelines set in the regular expression.
-m which stands for "multiline" which will search line by line rather than searching through a string as a whole.
-i which stands for "insensitive" will make the regular expression case-insensitive, so capitals and lower-case letters will not deture the matching.
+g (global)- allows for matching all the instances within a string that follow the matching guidelines set in the regular expression.
+m (multiline)-  this expression search line by line rather than searching through a string as a whole.
+i (insensitive)- makes the regular expression case-insensitive, so caps and lower-case letters will not affect the matching.
 ### Grouping and Capturing
-Contininuing with the code for matching an email:
+referencing the code for matching an email:
 
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
@@ -96,16 +95,9 @@ The guidelines for matching the group. For this code snippet, it can contain let
 The period is an escaped character, so it required the backslash in order to be able to be matched.
 
 ### Greedy and Lazy Match
-In the given code for matching an email, there isn't a greedy or lazy match included.
+The standard quantifiers in regular expressions are greedy, meaning they match as much as they can, only giving back as necessary to match the remainder of the regex. By using a lazy quantifier, the expression tries the minimal match first.
 
-### Boundaries
-If in a string, we are looking for for specific words. Boundaries are not used in the given matching an email code.
 
-### Back-references
-Back-references are not included in the given code.
-
-### Look-ahead and Look-behind
-If using a look-ahead or look-behind, then it has to match in a certain order. It is not being used in the given matching an email code.
 
 ## Author
 Olamide Bello

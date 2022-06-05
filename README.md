@@ -9,14 +9,19 @@ Matching Email-
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
 ## Table of Contents
-* [Anchors] (#Anchors)
-* [Quantifiers] (#Quantifiers)
-* [OROperator] (#OR Operator)
-* [CharacterClasses] (#Character Classes)
-* [Flags] (#Flags)
-* [GroupingandCapturing] (#Grouping and Capturing)
-* [BracketExpressions] (#Bracket Expressions)
-* [GreedyandLazyMatch] (#Greedy and Lazy Match)
+
+- [Anchors](#anchors)
+- [Quantifiers](#quantifiers)
+- [OR Operator](#or-operator)
+- [Character Classes](#character-classes)
+- [Flags](#flags)
+- [Grouping and Capturing](#grouping-and-capturing)
+- [Bracket Expressions](#bracket-expressions)
+- [Greedy and Lazy Match](#greedy-and-lazy-match)
+- [Boundaries](#boundaries)
+- [Back-references](#back-references)
+- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+
 
 
 ## Regex Components
@@ -38,19 +43,16 @@ and end with
 therefore, it must begin and end with the given parameters within the code. otherwise, it is not a match.
 
 ### Quantifiers
-A quantifier is used to determine how many times a specific character or sequence characters needs to be present in order to match.
-if we the follwing code for matching the email:
+A quantifier is used to determine how many times a specific character or sequence of characters needs to be present in order to match.
+take the following code for matching the email:
 
 ([a-z0-9_\.-]+)
 
 it will match any string that contains a-z, 0-9, _, ., or -. The quantifier + means it must contain at least one of these to be a match.
-
 ### OR Operator
 The next component we will be discussing is the "or" operator. The "or" operator within a regular expression is defined using the | element. The component indicates that it could be either of the components that we are separating with the |. For our hex value regular expression we have 
 ([a-f0-9]{6}|[a-f0-9]{3}). Note the or operator separating these 2 components. 
 This means that our hex value could either be 6 characters [a-f0-9]{6} or 3 characters [a-f0-9]{3}.
-
-
 ### Character Classes
 With a Character Classes, you can tell the regex engine to match only one out of several characters. Simply place the characters you want to match between square brackets. If you want to match an a or an e, use [ae]. You could use this in gr[ae]y to match either gray or grey. Very useful if you do not know whether the document you are searching through is written in American or British English.
 
@@ -80,7 +82,6 @@ We can talk about grouping and capturing.
 ([a-z0-9_\.-]+) is the first group that appears in our regex. This must be true before moving on to "match" the next part of the code. ([\da-z\.-]+) is the second group that appears in our regex. ([a-z\.]{2,6}) is the third group that appears in our regex.
 
 When matching, we have to make sure we are following the guidelines of the group before moving on to the next group.
-
 ### Bracket Expressions
 Contininuing with the code for matching an email:
 
@@ -93,12 +94,25 @@ We can talk about grouping and capturing.
 The guidelines for matching the group. For this code snippet, it can contain letters a-z, numbers 0-9, an underscore, hyphen, or period.
 
 The period is an escaped character, so it required the backslash in order to be able to be matched.
-
 ### Greedy and Lazy Match
 The standard quantifiers in regular expressions are greedy, meaning they match as much as they can, only giving back as necessary to match the remainder of the regex. By using a lazy quantifier, the expression tries the minimal match first.
+### Boundaries
+a boundary \b matches positions where one side is a word character  and the other side is not a word character (for instance, it may be the beginning of the string or a space character).
 
+The regex \bcat\b would therefore match cat in a black cat, but it wouldn't match it in catatonic, tomcat or certificate. Removing one of the boundaries, \bcat would match cat in catfish, and cat\b would match cat in tomcat, but not vice-versa. Both, of course, would match cat on its own.
 
+Word boundaries are useful when you want to match a sequence of letters (or digits) on their own, or to ensure that they occur at the beginning or the end of a sequence of characters.
 
+Be aware, though, that \bcat\b will not match cat in _cat or in cat25 because there is no boundary between an underscore and a letter, nor between a letter and a digit: these all belong to what regex defines as word characters. If you want to create a "real word boundary" (where a word is only allowed to have letters), see the recipe below in the section on DYI boundaries.
+### Back-references
+A backreference in a regular expression identifies a previously matched group and looks for exactly the same text again. A simple example of the use of backreferences is when you wish to look for adjacent, repeated words in some text. The first part of the match could use a pattern that extracts a single word.
+### Look-ahead and Look-behind
+Lookahead allows to add a condition for “what follows”. Lookbehind is similar, but it looks behind. That is, it allows to match a pattern only if there's something before it.
 ## Author
+
 Olamide Bello
 https://github.com/olacase
+
+## resources
+https://www.google.com
+https://www.rexegg.com/
